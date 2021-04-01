@@ -2,6 +2,8 @@ sentry:
   options:
     capture_silenced_errors: true
     error_types: E_ALL & ~E_USER_DEPRECATED
+    integrations:
+      - 'Sentry\Integration\IgnoreErrorsIntegration'
 
 framework:
   router: { resource: "%routing_config_dir%/routing.yml" }
@@ -22,6 +24,12 @@ services:
     autowire: true
     tags:
       - controller.service_arguments
+
+  Sentry\Integration\IgnoreErrorsIntegration:
+    arguments:
+      $options:
+        ignore_exceptions:
+          - '\Sentry\SentryBundle\Tests\End2End\App\Messenger\IgnorableException'
 
 monolog:
   handlers:
