@@ -2,6 +2,7 @@
 
 ## Unreleased
 - Avoid failures when the `RequestFetcher` fails to translate the `Request` (#472)
+- Unwrap Messenger failures (`HandlerFailedException`) when using sync transport (#475)
 
 ## 4.0.3 (2021-03-03)
 - Fix regression from #454 for `null` value on DSN not disabling Sentry (#457)
