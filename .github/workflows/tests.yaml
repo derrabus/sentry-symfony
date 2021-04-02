@@ -54,7 +54,7 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          coverage: xdebug
+          coverage: pcov
       - run: |
           sed -ri '/symfony\/(monolog-bundle|phpunit-bridge|messenger|psr-http-message-bridge|polyfill-php80)/! s/"symfony\/(.+)": "(.+)"/"symfony\/\1": "'${{ matrix.symfony_constraint }}'"/' composer.json;
         if: matrix.symfony_constraint
